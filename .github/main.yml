@@ -1,0 +1,25 @@
+name: push to aws function
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  lambdaDeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: list files in the directory
+        run: ls -la
+
+      - name: zip the package
+        run: zip -r function.zip helloworld.py
+
+      -name: list files in the directory
+        run: ls -la
+
+      - name: aws cli check
+        run: aws --version
+ 
